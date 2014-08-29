@@ -22,3 +22,7 @@
 
 # Hg metadata
 .hg
+
+# Build artifacts
+hs_err_pid*.log
+linux-x86_64-normal-server-release
