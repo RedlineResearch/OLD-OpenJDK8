@@ -30,6 +30,8 @@
 #include "memory/generation.hpp"
 #include "memory/sharedHeap.hpp"
 
+#include "beanstalk.hpp"
+
 class SubTasksDone;
 
 // A "GenCollectedHeap" is a SharedHeap that uses generational
@@ -84,6 +86,9 @@ public:
 
   // In block contents verification, the number of header words to skip
   NOT_PRODUCT(static size_t _skip_header_HeapWords;)
+
+  // RLV - beanstalk
+  Beanstalk::Client *bstalkClient;
 
 protected:
   // Helper functions for allocation

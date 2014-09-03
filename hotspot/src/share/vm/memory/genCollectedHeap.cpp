@@ -57,8 +57,12 @@
 #include "gc_implementation/concurrentMarkSweep/vmCMSOperations.hpp"
 #endif // INCLUDE_ALL_GCS
 
+#include "beanstalk.hpp"
+
 GenCollectedHeap* GenCollectedHeap::_gch;
 NOT_PRODUCT(size_t GenCollectedHeap::_skip_header_HeapWords = 0;)
+
+// TODO using Beanstalk::Client;
 
 // The set of potentially parallel tasks in strong root scanning.
 enum GCH_process_strong_roots_tasks {
@@ -79,6 +83,7 @@ GenCollectedHeap::GenCollectedHeap(GenCollectorPolicy *policy) :
     vm_exit_during_initialization("Failed necessary allocation.");
   }
   assert(policy != NULL, "Sanity check");
+  this->bstalkClient = new Beanstalk::Client("127.0.0.1", 11300);
 }
 
 jint GenCollectedHeap::initialize() {

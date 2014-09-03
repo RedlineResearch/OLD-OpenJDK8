@@ -26,3 +26,7 @@
 # Build artifacts
 hs_err_pid*.log
 linux-x86_64-normal-server-release
+config.log
+config.status
+# editor stuff
+.*sw?
