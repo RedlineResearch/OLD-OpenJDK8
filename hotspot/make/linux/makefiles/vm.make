@@ -56,8 +56,9 @@ endif
 Src_Dirs_V += $(GENERATED)/adfiles $(GENERATED)/jvmtifiles $(GENERATED)/tracefiles
 VPATH += $(Src_Dirs_V:%=%:)
 
+CIRCBUFFERDIR = /data/rveroy/pulsrc/circbuffer
 # set INCLUDES for C preprocessor.
-Src_Dirs_I += $(GENERATED)
+Src_Dirs_I += $(GENERATED) $(CIRCBUFFERDIR)
 # The order is important for the precompiled headers to work.
 INCLUDES += $(PRECOMPILED_HEADER_DIR:%=-I%) $(Src_Dirs_I:%=-I%)
 

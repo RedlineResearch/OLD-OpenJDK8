@@ -73,6 +73,9 @@
 # include "orderAccess_bsd_zero.inline.hpp"
 #endif
 
+// Circular buffer - RLV 
+#include "utilities/circbuffer.hpp"
+#include "time.h"
 
 // no precompiled headers
 #ifdef CC_INTERP
@@ -2010,6 +2013,14 @@ run:
               }
               result->set_klass_gap(0);
               result->set_klass(k_entry);
+              // DEBUG
+              // struct timespec tp;
+              time_t walltime;
+              // int result = clock_gettime(CLOCK_REALTIME, &tp);
+              // long nanotime = (result == 0) ? tp.tv_nsec : 0;
+              time( &walltime );
+              CBRecord rec(ALLOCATE, 0, 0, (void *) result);
+              // END DEBUG
               SET_STACK_OBJECT(result, 0);
               UPDATE_PC_AND_TOS_AND_CONTINUE(3, 1);
             }
